@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
-import CardElem from "../components/Card";
+import Navbar from "../components/Navbar";
 
-const Favourite = ()=>{
+const Favourite = ({favourites, setFavourites})=>{
+
+    const removeFavourite = (id)=>{
+        setFavourites(favourites => favourites.filter(item => item.id != id))
+    }
+
     return <>
+    <Navbar />
     <div>
-        <Link to='/' >Home</Link>
-        <Link to='/favourite' >Favourite</Link>
+        {favourites.map(item => <div>
+                <Link to = {`/posts/${item.id}`} state={item}  style={{textDecoration: 'none'}}>
+                    <div key = {item.id}>
+                        <h4>{item.title}</h4>
+                        <h5>{item.author}</h5>
+                    </div>
+                </Link>
+                <button onClick={()=>removeFavourite(item.id)}>Remove from Favourites</button>
+            </div>
+        )}
     </div>
-    <div><>
-            <div><CardElem /></div>
-            <div><CardElem /></div>
-        </></div>
+        
+
 </>
 }
 

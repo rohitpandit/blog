@@ -1,0 +1,9 @@
+const SinglePostCard = ({data}) =>{
+    return <div>
+        <h2>{data.title}</h2>
+        <hr/>
+        <p>{data.body}</p>
+    </div>
+}
+
+export default SinglePostCard;

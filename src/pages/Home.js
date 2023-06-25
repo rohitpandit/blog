@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState, useMemo, useCallback } from "react";
-import { Link } from "react-router-dom";
 import CardElem  from '../components/Card.js'
 import Loader from "../components/Loader.js";
 import Error from '../components/Error.js'
+import Navbar from "../components/Navbar.js";
 
 const Home = ()=>{
 
@@ -32,11 +32,8 @@ const Home = ()=>{
 
 
     return <>
-        <div>
-            <Link to='/' >Home</Link>
-            <Link to='/favourite' >Favourite</Link>
-        </div>
-        <>
+        <Navbar />
+        <div className="mx-5">
             {currentState == 'loading' && <Loader />}
             {currentState == 'error' && <Error error={error} />}
 
@@ -44,7 +41,7 @@ const Home = ()=>{
                 <CardElem data = {item} />
             </>)}
 
-        </>
+        </div>
         
     </>
 }
