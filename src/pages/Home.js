@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, Fragment } from "react";
 import CardElem  from '../components/Card.js'
 import Loader from "../components/Loader.js";
 import Error from '../components/Error.js'
@@ -37,9 +37,9 @@ const Home = ()=>{
             {currentState == 'loading' && <Loader />}
             {currentState == 'error' && <Error error={error} />}
 
-            {currentState == 'success' && posts.map(item => <>
-                <CardElem data = {item} />
-            </>)}
+            {currentState == 'success' && posts.map(item => <Fragment key = {item.id}>
+                <CardElem data = {item}  />
+            </Fragment>)}
 
         </div>
         

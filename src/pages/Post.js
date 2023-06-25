@@ -6,10 +6,13 @@ import Loader from "../components/Loader.js";
 import Error from "../components/Error.js";
 import AuthorCard from "../components/AuthorCard.js";
 import Navbar from "../components/Navbar.js";
+import Comments from '../components/Comments.js'
+import { loadComments, storeComments } from "../lib/localstore.js";
 
 const Post = ({favourites, setFavourites})=>{
     const location = useLocation();
     let [post, setPost] = useState(null)
+    let [comments, setComments] = useState();
     let [postError, setPostError] = useState(null);
     let [postCurrentState, setPostCurrentState] = useState('loading');
     let [author, setAuthor] = useState(null)
@@ -52,7 +55,6 @@ const Post = ({favourites, setFavourites})=>{
             setPostError(error);
             setPostCurrentState('error')
         })
-
     },[])
 
 
@@ -68,8 +70,18 @@ const Post = ({favourites, setFavourites})=>{
             setAuthorError(error);
             setAuthorCurrentState('error')
         })
-
     },[])
+
+    useEffect(()=>{
+        setComments(loadComments())
+    },[])
+
+    useEffect(()=>{
+        storeComments(comments)
+        console.log('asdfasd', loadComments())
+    }, [comments])
+
+   
 
 
     return <>
@@ -91,6 +103,9 @@ const Post = ({favourites, setFavourites})=>{
                     {authorCurrentState == 'error' && <Error error={authorError} />}
                     {authorCurrentState == 'success' && <AuthorCard data = {author} />}
                 </div>
+            </div>
+            <div>
+                {postCurrentState == 'success' && <Comments data = {post} comments= {comments} setComments = {setComments} />}
             </div>
         </div>
     </>
