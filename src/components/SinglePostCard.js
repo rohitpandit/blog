@@ -1,5 +1,5 @@
 const SinglePostCard = ({data}) =>{
-    return <div>
+    return <div className="">
         <h2>{data.title}</h2>
         <hr/>
         <p>{data.body}</p>

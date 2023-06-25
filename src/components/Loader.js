@@ -1,14 +1,21 @@
 import { Skeleton } from "antd"
 
 const Loader = ()=>{
-    return 
-    <>
-        <Skeleton />
-        <Skeleton />
-        <Skeleton />
-        <Skeleton />
 
+    return (
+    <>  
+        <div className="shadow-sm p-3 mt-5">
+            <Skeleton />
+        </div>
+        <div className="shadow-sm p-3 mt-5">
+            <Skeleton />
+        </div>
+        <div className="shadow-sm p-3 mt-5">
+            <Skeleton />
+        </div>
     </>
+    )
+    
 }
 
 

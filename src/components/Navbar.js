@@ -15,7 +15,7 @@ const Navbar = ()=>{
                 <NavLink className="nav-link" to= '/' style={{textDecoration: 'none'}}>Home</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to= '/favourites' style={{textDecoration: 'none'}}>Favourites</NavLink>
+                <NavLink className="nav-link" to= '/favourite' style={{textDecoration: 'none'}}>Favourites</NavLink>
             </li>
             </ul>
         </div>

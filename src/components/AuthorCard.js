@@ -1,10 +1,10 @@
 const AuthorCard = ({data})=>{
-    return <>
-        <h4>Name: {data.name}</h4>
-        <h5>Email: {data.email}</h5>
-        <h5>Phone: {data.phone}</h5>
-        <h5>City: {data.address.city}</h5>
-    </>
+    return <div className="m-4 " >
+        <p className="my-1">Author: {data.name}</p>
+        <p className="my-1">Email: {data.email}</p>
+        <p className="my-1">Phone: {data.phone}</p>
+        <p className="my-1">City: {data.address.city}</p>
+    </div>
 }
 
 export default AuthorCard;

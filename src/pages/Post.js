@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import SinglePostCard from "../components/SinglePostCard.js";
 import Loader from "../components/Loader.js";
 import Error from "../components/Error.js";
@@ -74,20 +74,25 @@ const Post = ({favourites, setFavourites})=>{
 
     return <>
         <Navbar />
-        <>
-            <div>
+        <div className="mx-5 row ">
+            <div className=" col-12 col-md-9 mt-3">
                 {postCurrentState == 'loading' && <Loader />}
                 {postCurrentState == 'error' && <Error error={postError} />}
                 {postCurrentState == 'success' && <SinglePostCard data = {post} />}
             </div>
-            <div>
-                {authorCurrentState == 'loading' && <Loader />}
-                {authorCurrentState == 'error' && <Error error={authorError} />}
-                {authorCurrentState == 'success' && <AuthorCard data = {author} />}
+            <div className="col-12 col-md-3 mt-2">
+                <button className=" btn btn-primary" onClick={()=>{toggleFavourites()}}>
+                    {post && favourites.findIndex(item => item.id == post.id) == -1 ? `Add to Favourites` : `remove Favourite`}
+                </button>
+                <div className="shadow my-4 py-2">
+                    <h4 className="p-4">Author Details: </h4>
+                    <hr className="m-0" />
+                    {authorCurrentState == 'loading' && <Loader />}
+                    {authorCurrentState == 'error' && <Error error={authorError} />}
+                    {authorCurrentState == 'success' && <AuthorCard data = {author} />}
+                </div>
             </div>
-            <button onClick={()=>{toggleFavourites()}}>
-                {post && favourites.findIndex(item => item.id == post.id) == -1 ? `Add to Favourites` : `remove Favourite`}</button>
-        </>
+        </div>
     </>
 }
 
