@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useMemo, useCallback, Fragment } from "react";
+import { useEffect, useState,  Fragment } from "react";
 import CardElem  from '../components/Card.js'
 import Loader from "../components/Loader.js";
 import Error from '../components/Error.js'
@@ -11,11 +11,13 @@ const Home = ()=>{
     let [error, setError] = useState(null);
     let [currentState, setCurrentState] = useState('loading');
 
-    let getPosts = async  ()=>{
-        return axios.get('https://jsonplaceholder.typicode.com/posts');
-    };
+   
 
     useEffect(  ()=>{
+        let getPosts = async  ()=>{
+            return axios.get('https://jsonplaceholder.typicode.com/posts');
+        };
+        
         getPosts()
         .then(item => {
             console.log('item: ', item);

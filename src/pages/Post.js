@@ -18,15 +18,7 @@ const Post = ({favourites, setFavourites})=>{
     let [author, setAuthor] = useState(null)
     let [authorError, setAuthorError] = useState(null);
     let [authorCurrentState, setAuthorCurrentState] = useState('loading');
-
-    let getPost = async ()=>{
-        return axios.get(`https://jsonplaceholder.typicode.com/posts/${location.state.id}`);
-    };
-
-
-    let getAuthor = async ()=>{
-        return axios.get(`https://jsonplaceholder.typicode.com/users/${location.state.userId}`);
-    };
+  
 
     const toggleFavourites = () =>{
         let temp = {title: post.title, author: author.name, id:post.id, userId: author.id}
@@ -42,8 +34,11 @@ const Post = ({favourites, setFavourites})=>{
     }
 
 
-
     useEffect(  ()=>{
+        let getPost = async ()=>{
+            return axios.get(`https://jsonplaceholder.typicode.com/posts/${location.state.id}`);
+        };
+
         getPost()
         .then(item => {
             console.log('item: ', item);
@@ -59,6 +54,10 @@ const Post = ({favourites, setFavourites})=>{
 
 
     useEffect(  ()=>{
+        let getAuthor = async ()=>{
+            return axios.get(`https://jsonplaceholder.typicode.com/users/${location.state.userId}`);
+        };
+
         getAuthor()
         .then(item => {
             console.log('item: ', item);
@@ -88,24 +87,24 @@ const Post = ({favourites, setFavourites})=>{
         <Navbar />
         <div className="mx-5 row ">
             <div className=" col-12 col-md-9 mt-3">
-                {postCurrentState == 'loading' && <Loader />}
-                {postCurrentState == 'error' && <Error error={postError} />}
-                {postCurrentState == 'success' && <SinglePostCard data = {post} />}
+                {postCurrentState === 'loading' && <Loader />}
+                {postCurrentState === 'error' && <Error error={postError} />}
+                {postCurrentState === 'success' && <SinglePostCard data = {post} />}
             </div>
             <div className="col-12 col-md-3 mt-2">
                 <button className=" btn btn-primary" onClick={()=>{toggleFavourites()}}>
-                    {post && favourites.findIndex(item => item.id == post.id) == -1 ? `Add to Favourites` : `remove Favourite`}
+                    {post && favourites.findIndex(item => item.id === post.id) === -1 ? `Add to Favourites` : `remove Favourite`}
                 </button>
                 <div className="shadow my-4 py-2">
                     <h4 className="p-4">Author Details: </h4>
                     <hr className="m-0" />
-                    {authorCurrentState == 'loading' && <Loader />}
-                    {authorCurrentState == 'error' && <Error error={authorError} />}
-                    {authorCurrentState == 'success' && <AuthorCard data = {author} />}
+                    {authorCurrentState === 'loading' && <Loader />}
+                    {authorCurrentState === 'error' && <Error error={authorError} />}
+                    {authorCurrentState === 'success' && <AuthorCard data = {author} />}
                 </div>
             </div>
             <div>
-                {postCurrentState == 'success' && <Comments data = {post} comments= {comments} setComments = {setComments} />}
+                {postCurrentState === 'success' && <Comments data = {post} comments= {comments} setComments = {setComments} />}
             </div>
         </div>
     </>
