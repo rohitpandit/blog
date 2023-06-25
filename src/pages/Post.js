@@ -50,7 +50,7 @@ const Post = ({favourites, setFavourites})=>{
             setPostError(error);
             setPostCurrentState('error')
         })
-    },[])
+    },[location.state.id])
 
 
     useEffect(  ()=>{
@@ -69,7 +69,7 @@ const Post = ({favourites, setFavourites})=>{
             setAuthorError(error);
             setAuthorCurrentState('error')
         })
-    },[])
+    },[location.state.userId])
 
     useEffect(()=>{
         setComments(loadComments())
