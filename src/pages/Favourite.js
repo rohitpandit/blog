@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const Favourite = ({favourites, setFavourites})=>{
 
     const removeFavourite = (id)=>{
-        setFavourites(favourites => favourites.filter(item => item.id != id))
+        setFavourites(favourites => favourites.filter(item => item.id !== id))
     }
 
     return <>
@@ -21,7 +21,7 @@ const Favourite = ({favourites, setFavourites})=>{
             </div>
         )}
 
-        {favourites.length == 0 && <div className="d-flex " style={{height: '80vh'}}>
+        {favourites.length === 0 && <div className="d-flex " style={{height: '80vh'}}>
                 <div className="m-auto">
                     <h2>No Favourites Found!</h2>
                     <p>Please mark blogs as Favourite to see your favourites here</p>

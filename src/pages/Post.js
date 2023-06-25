@@ -30,9 +30,9 @@ const Post = ({favourites, setFavourites})=>{
 
     const toggleFavourites = () =>{
         let temp = {title: post.title, author: author.name, id:post.id, userId: author.id}
-        let index = favourites.findIndex(item => item.id == post.id);
+        let index = favourites.findIndex(item => item.id === post.id);
         console.log('index: ', index)
-        if(index == -1){
+        if(index === -1){
             console.log('coming insdie')
             setFavourites(favourites=> [...favourites, temp])
         }else{

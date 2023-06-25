@@ -34,10 +34,10 @@ const Home = ()=>{
     return <>
         <Navbar />
         <div className="mx-5">
-            {currentState == 'loading' && <Loader />}
-            {currentState == 'error' && <Error error={error} />}
+            {currentState === 'loading' && <Loader />}
+            {currentState === 'error' && <Error error={error} />}
 
-            {currentState == 'success' && posts.map(item => <Fragment key = {item.id}>
+            {currentState === 'success' && posts.map(item => <Fragment key = {item.id}>
                 <CardElem data = {item}  />
             </Fragment>)}
 

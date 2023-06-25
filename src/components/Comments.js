@@ -5,7 +5,7 @@ const Comments  = ({data, comments,setComments}) =>{
     console.log('comments; ', comments)
 
     const [comment, setComment] = useState('');
-    let filteredComments = comments.filter(item => item.postId == data.id) ;
+    let filteredComments = comments.filter(item => item.postId === data.id) ;
 
     const addComment = ()=>{
         let temp = {
@@ -33,7 +33,7 @@ const Comments  = ({data, comments,setComments}) =>{
                     </div>    
                 )}
 
-                {filteredComments.length == 0 && <div>No comments</div>}
+                {filteredComments.length === 0 && <div>No comments</div>}
             </div>
         </div>
     )

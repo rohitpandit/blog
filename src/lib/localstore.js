@@ -1,6 +1,6 @@
 const loadComments = () =>{
     let res = localStorage.getItem('comments');
-    if(!res || res == 'undefined'  || res == '[]'){
+    if(!res || res === 'undefined'  || res === '[]'){
         return [];
     }
     return JSON.parse(res)
@@ -13,7 +13,7 @@ const storeComments = (comments) =>{
 const loadFavourites = ()=>{
     let res = localStorage.getItem('favourites');
     console.log('res;:::::: ', res)
-    if(!res || res == 'undefined' || res == '[]'){
+    if(!res || res === 'undefined' || res === '[]'){
         return [];
     }
     return JSON.parse(res)
